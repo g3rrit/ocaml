@@ -2,7 +2,7 @@ open Int64
 
 type utf8_char =
   | Ascii of char
-  | Unicode of int64
+  | Unicode of char list
   | Invalid
   | Eof
 
