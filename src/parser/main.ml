@@ -1,7 +1,6 @@
 open Printf
 
-   (*
-let print_file =
+let print_file () =
   let inf = open_in_bin "test.txt" in
   let inp = Input.create inf in
   let rec print_all i =
@@ -10,24 +9,17 @@ let print_file =
       | Eof -> ()
   in
   print_all inp
-*)
 
+(*
 
 let print_next inp =
   match Input.next inp with
   | Char c -> printf "%c" c
   | Eof -> ()
+*)
 
 
 let () =
-  let inp = Input.create (open_in_bin "test.txt") in
+  (*let inp = Input.create (open_in_bin "test.txt") in*)
   printf "Starting Parser\n";
-  print_next inp;
-  print_next inp;
-  print_next inp;
-  print_next inp;
-  print_next inp;
-  print_next inp;
-  Input.rewind inp 3;
-  print_next inp;
-  print_next inp
+  print_file ()
