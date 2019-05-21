@@ -28,3 +28,9 @@ let next inp =
   let nc = !(inp.n) in
   (inp.n) := (next_char inp.inf);
   nc
+
+let peek inp =
+  !(inp.n)
+
+let consume inp =
+  let _ = next inp in ()
