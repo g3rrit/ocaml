@@ -11,7 +11,7 @@ let next_char inf =
   | None -> Eof
 
 
-class input _inf = object(self)
+class t _inf = object(self)
   val inf : In_channel.t = _inf
   val mutable cur : in_char = next_char _inf
 

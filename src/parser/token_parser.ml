@@ -171,41 +171,41 @@ let rec next inp =
   | Input.Eof -> Teof
 
 
-let print t =
+let to_string t =
   match t with
-  | Tid s -> Stdio.printf Stdio.stdio "id: %s\n" s
-  | Tiid s -> Printf.printf "iid: %s\n" s
-  | Tint n -> Printf.printf "int: %d\n" n
-  | Tfloat n -> Printf.printf "float: %f\n" n
-  | Tchar c -> Printf.printf "char: [%c]\n" c
-  | Tstr s -> Printf.printf "string: %s\n" s
-  | Top_em -> Printf.printf "Top_em (!)\n"
-  | Top_ds -> Printf.printf "Top_ds ($)\n"
-  | Top_pc -> Printf.printf "Top_pc (%)\n"
-  | Top_am -> Printf.printf "Top_am (&)\n"
-  | Top_lp -> Printf.printf "Top_lp (()\n"
-  | Top_rp -> Printf.printf "Top_rp ())\n"
-  | Top_as -> Printf.printf "Top_as (*)\n"
-  | Top_ps -> Printf.printf "Top_ps (+)\n"
-  | Top_cm -> Printf.printf "Top_cm (,)\n"
-  | Top_ms -> Printf.printf "Top_ms (-)\n"
-  | Top_dp -> Printf.printf "Top_dp (.)\n"
-  | Top_sl -> Printf.printf "Top_sl (/)\n"
-  | Top_cn -> Printf.printf "Top_cn (:)\n"
-  | Top_se -> Printf.printf "Top_se (;)\n"
-  | Top_lt -> Printf.printf "Top_lt (<)\n"
-  | Top_eq -> Printf.printf "Top_eq (=)\n"
-  | Top_gt -> Printf.printf "Top_gt (>)\n"
-  | Top_qm -> Printf.printf "Top_qm (?)\n"
-  | Top_at -> Printf.printf "Top_at (@)\n"
-  | Top_ls -> Printf.printf "Top_ls ([)\n"
-  | Top_bs -> Printf.printf "Top_bs (\\)\n"
-  | Top_rs -> Printf.printf "Top_rs (])\n"
-  | Top_ci -> Printf.printf "Top_ci (^)\n"
-  | Top_us -> Printf.printf "Top_us (_)\n"
-  | Top_lb -> Printf.printf "Top_lb ({)\n"
-  | Top_vb -> Printf.printf "Top_vb (|)\n"
-  | Top_rb -> Printf.printf "Top_rb (})\n"
-  | Top_td -> Printf.printf "Top_td (~)\n"
-  | Tother -> Printf.printf "other\n"
-  | Teof -> Printf.printf "eof\n"
+  | Tid s -> Printf.sprintf "id: %s" s
+  | Tiid s -> Printf.sprintf "iid: %s" s
+  | Tint n -> Printf.sprintf "int: %d" n
+  | Tfloat n -> Printf.sprintf "float: %f" n
+  | Tchar c -> Printf.sprintf "char: [%c]" c
+  | Tstr s -> Printf.sprintf "string: %s" s
+  | Top_em -> Printf.sprintf "Top_em (!)"
+  | Top_ds -> Printf.sprintf "Top_ds ($)"
+  | Top_pc -> Printf.sprintf "Top_pc (%%)"
+  | Top_am -> Printf.sprintf "Top_am (&)"
+  | Top_lp -> Printf.sprintf "Top_lp (()"
+  | Top_rp -> Printf.sprintf "Top_rp ())"
+  | Top_as -> Printf.sprintf "Top_as (*)"
+  | Top_ps -> Printf.sprintf "Top_ps (+)"
+  | Top_cm -> Printf.sprintf "Top_cm (,)"
+  | Top_ms -> Printf.sprintf "Top_ms (-)"
+  | Top_dp -> Printf.sprintf "Top_dp (.)"
+  | Top_sl -> Printf.sprintf "Top_sl (/)"
+  | Top_cn -> Printf.sprintf "Top_cn (:)"
+  | Top_se -> Printf.sprintf "Top_se (;)"
+  | Top_lt -> Printf.sprintf "Top_lt (<)"
+  | Top_eq -> Printf.sprintf "Top_eq (=)"
+  | Top_gt -> Printf.sprintf "Top_gt (>)"
+  | Top_qm -> Printf.sprintf "Top_qm (?)"
+  | Top_at -> Printf.sprintf "Top_at (@)"
+  | Top_ls -> Printf.sprintf "Top_ls ([)"
+  | Top_bs -> Printf.sprintf "Top_bs (\\)"
+  | Top_rs -> Printf.sprintf "Top_rs (])"
+  | Top_ci -> Printf.sprintf "Top_ci (^)"
+  | Top_us -> Printf.sprintf "Top_us (_)"
+  | Top_lb -> Printf.sprintf "Top_lb ({)"
+  | Top_vb -> Printf.sprintf "Top_vb (|)"
+  | Top_rb -> Printf.sprintf "Top_rb (})"
+  | Top_td -> Printf.sprintf "Top_td (~)"
+  | Tother -> Printf.sprintf "other"
+  | Teof -> Printf.sprintf "eof"

@@ -1,5 +1,5 @@
-open Printf
 
+   (*
 let print_file () =
   let inf = open_in_bin "test.txt" in
   let inp = new Input.input inf in
@@ -9,13 +9,15 @@ let print_file () =
       | Input.Eof -> ()
   in
   print_all inp
+*)
 
 let print_token () =
-  let inf = open_in_bin "test.txt" in
-  let inp = new Input.input inf in
+  let inf = Stdio.In_channel.create "test.txt" in
+  let inp = new Input.t inf in
     let rec print_all i =
-      Token_parser.print (Token_parser.next i);
-      print_all i
+      let token = Token_parser.next i in
+      Stdio.printf "%s\n" (Token_parser.to_string token);
+      if token = Teof then () else print_all i
     in
     print_all inp
 
@@ -30,5 +32,5 @@ let print_next inp =
 
 let () =
   (*let inp = Input.create (open_in_bin "test.txt") in*)
-  printf "Starting Parser\n";
+  Stdio.printf "Starting Parser\n";
   print_token ()
