@@ -12,3 +12,6 @@ let int_crt (l : char list) : int =
 let float_crt (l : char list) : float =
   let sv = str_crt l in
   float_of_string sv
+
+
+let ign a = let _ = a in ()

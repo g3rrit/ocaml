@@ -11,26 +11,18 @@ let next_char inf =
   | None -> Eof
 
 
-type input =
-  {
-    inf   : In_channel.t;
-    n     : in_char ref;
-  }
+class input _inf = object(self)
+  val inf : In_channel.t = _inf
+  val mutable cur : in_char = next_char _inf
 
-let create inf =
-  {
-    inf = inf;
-    n   = ref (next_char inf)
-  }
+  method next : in_char =
+    let nc = cur in
+    cur <- next_char inf;
+    nc
 
+  method peek : in_char =
+    cur
 
-let next inp =
-  let nc = !(inp.n) in
-  (inp.n) := (next_char inp.inf);
-  nc
-
-let peek inp =
-  !(inp.n)
-
-let consume inp =
-  let _ = next inp in ()
+  method consume : unit =
+    let _ = self#next in ()
+end
