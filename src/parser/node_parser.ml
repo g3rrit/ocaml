@@ -4,20 +4,20 @@ module Token = Token_parser
 
 exception Foo of unit
 
-let rec next_node inp =
-  let rec parse_list inp lst b_tok =
+let rec next inp =
+  let rec parse_list inp b_tok =
     if b_tok = inp#peek then
       begin
         inp#consume;
-        lst
+        Node.null_node
       end
     else
-      parse_list inp (lst @ [next_node inp]) b_tok
+      Node.list_ty#crt [(parse_list inp b_tok); (next inp)]
   in
-  let parse_id inp id =
-
+  let parser_id inp id =
+    new Node.id_node id
   in
   match inp#next with
   | Token.Tid id -> parse_id inp id
-  | Token.Top_lp -> parse_list_node inp [] Token.Top_rp
+  | Token.Top_lp -> parse_list_node inp Token.Top_rp
   | _ -> raise (Foo ())

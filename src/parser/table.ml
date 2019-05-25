@@ -1,15 +1,15 @@
 open Base
 
-module Smap = Map.Make(String)
+let empty = Map.empty (module String)
 
 module Make (Content : sig type val_t end) =
   functor () ->
   struct
     type t = Content.val_t
-    let map = ref Smap.empty
+    let map = ref empty
 
-    let add (id : string) (v : val_t) : unit =
-      map := Smap.add id v !map
+    let add (id : string) (v : t) : unit =
+      map := Map.add (!map) ~key:id ~data:v
 
     let get (id : string) : val_t option =
       Smap.find map id
