@@ -1,12 +1,7 @@
+open Base
 
-class virtual node = object
-  method virtual parse : Input.t -> Symbol.table -> node
+class virtual t = object
+  method virtual get (id : string) : t
 end
 
-
-class fun_node = object
-  inherit node
-
-  method parse input st =
-
-end
+module Table = Tabl.Make(struct type val_t = t end)

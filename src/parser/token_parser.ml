@@ -85,7 +85,7 @@ let or_else inp f ex =
   | Input.Eof -> raise ex
 
 
-let rec next inp =
+let rec next_token inp =
   let rec parse_when f b inp =
     match inp#peek with
     | Input.Char c -> begin
@@ -133,7 +133,7 @@ let rec next inp =
   match inp#next with
   | Input.Char c -> begin
      match c with
-     | c when is_ignore c     -> next inp
+     | c when is_ignore c     -> next_token inp
      | c when is_char c       -> parse_id c inp
      | c when ccompare '#' c  -> parse_iid inp
      | c when is_num c        -> parse_int_or_float c inp
@@ -209,3 +209,20 @@ let to_string t =
   | Top_td -> Printf.sprintf "Top_td (~)"
   | Tother -> Printf.sprintf "other"
   | Teof -> Printf.sprintf "eof"
+
+
+class t _inp = object(self)
+  val inp : Input.t = _inp
+  val mutable cur : token = next_token _inp
+
+  method next : token =
+    let nc = cur in
+    cur <- next_token inp;
+    nc
+
+  method peek : token =
+    cur
+
+  method consume : unit =
+    let _ = self#next in ()
+end
