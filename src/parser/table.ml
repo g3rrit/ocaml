@@ -9,8 +9,8 @@ module Make (Content : sig type val_t end) =
     let map = ref empty
 
     let add (id : string) (v : t) : unit =
-      map := Map.add (!map) ~key:id ~data:v
+      map := Map.set (!map) ~key:id ~data:v
 
-    let get (id : string) : val_t option =
-      Smap.find map id
+    let get (id : string) : t option =
+      Map.find !map id
   end
